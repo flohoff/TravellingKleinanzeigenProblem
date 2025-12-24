@@ -4,8 +4,13 @@ import requests
 
 
 def coords_to_postal(lat, lon):
+
+    headers = requests.utils.default_headers()
+    headers.update({'User-agent': 'TravellingKleinanzeigenProblem/1.0 f.zz.de/1.0'})
+
     req = requests.get('https://nominatim.openstreetmap.org/reverse',
-                       {'format': 'jsonv2', 'lat': str(lat), 'lon': str(lon)})
+                       headers=headers,
+                       params={'format': 'jsonv2', 'lat': str(lat), 'lon': str(lon)})
     if req.status_code != requests.codes.ok:
         raise Exception('failed to convert coordinates to postal codes')
 
