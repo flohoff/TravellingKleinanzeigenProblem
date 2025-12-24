@@ -3,7 +3,7 @@ import mechanicalsoup
 
 def get_listings_page(keywords, postcode, radius=0):
     browser = mechanicalsoup.StatefulBrowser()
-    browser.open("https://www.ebay-kleinanzeigen.de")
+    browser.open("https://www.kleinanzeigen.de")
     browser.select_form('form[id="site-search-form"]')
     browser['keywords'] = keywords
     browser['locationStr'] = postcode
